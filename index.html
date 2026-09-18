@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EaglercraftX</title>
+  <link rel="stylesheet" href="styles.css" />
+
+  <!-- Ultimate Game Stash file -->
+  <!-- For the regularly updating doc go to https://docs.google.com/document/d/1_FmH3BlSBQI7FGgAQL59-ZPe8eCxs35wel6JUyVaG8Q/ -->
+
+  <script src="https://cdn.jsdelivr.net/gh/bubbls/loltheygotbannedfromjsdelivr@38f40924ae70b843f3d4d0a5dc3d6ba13ca3a461/classes.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/gh/bubbls/loltheygotbannedfromjsdelivr@38f40924ae70b843f3d4d0a5dc3d6ba13ca3a461/fix-webm-duration.js"></script>
+</head>
+<body>
+  <main id="game_frame" aria-label="EaglercraftX game"></main>
+  <div class="_eaglercraftX_wrapper_element"></div>
+  <div id="_eaglercraftX_crashReason" hidden></div>
+  <div id="_eaglercraftX_crashUserAgent" hidden></div>
+
+  <script>
+    window.addEventListener('load', function () {
+      window.focus();
+      document.body.addEventListener('click', function () {
+        window.focus();
+      }, false);
+
+      if (window.location.protocol === 'file:') {
+        console.warn('HTTP required. Open this site through GitHub Pages or a local HTTP server.');
+        return;
+      }
+
+      window.eaglercraftXOpts = window.eaglercraftXOpts || {
+        container: 'game_frame',
+        assetsURI: 'https://cdn.jsdelivr.net/gh/bubbls/loltheygotbannedfromjsdelivr@38f40924ae70b843f3d4d0a5dc3d6ba13ca3a461/assets.epk',
+        localesURI: 'lang/',
+        servers: [
+          { addr: 'wss://mc.arch.lol/', name: 'ArchMC' },
+          { addr: 'wss://mc.asspixel.net', name: 'AssPixel' },
+          { addr: 'wss://sus.shhnowisnottheti.me', name: 'Ayunboom' },
+          { addr: 'wss://aeon-network.net/1.8', name: 'Aeon' },
+          { addr: 'wss://zentic.org/', name: 'Zentic' }
+        ]
+      };
+
+      try {
+        if (typeof main === 'function') {
+          main();
+        } else {
+          console.error('EaglercraftX failed to load.');
+        }
+      } catch (error) {
+        console.error('Error starting EaglercraftX:', error);
+      }
+    });
+  </script>
+</body>
+</html>
